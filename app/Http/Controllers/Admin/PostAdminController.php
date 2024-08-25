@@ -18,6 +18,10 @@ class PostAdminController extends Controller
 
         $data = Post::latest()->paginate(10);
 
+        if (request()->ajax()) {
+            return response()->json($data);
+        }
+
         return view("admin.posts.index", compact('data'));
     }
 
