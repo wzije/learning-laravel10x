@@ -6,7 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\TestingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +24,6 @@ use Illuminate\Support\Facades\Route;
 // Route::get("/", function () {
 //     return view("home", ["title" => "Halaman Home"]);
 // });
-
 
 
 Route::prefix("admin")
@@ -55,13 +54,13 @@ Route::get("/posts/create", function () {
     ]);
 });
 
-
 Route::get("/posts/{id}", [PostController::class, "show"]);
-
-
-
 Route::get("/about", [PageController::class, "about"]);
-
 Route::get("/categories/{slug}", [CategoryController::class, "findBySlug"]);
 
-Route::get("/send-mail", function () {});
+Route::get("/test", [TestingController::class, "hallo"]);
+Route::get("/test/about", [TestingController::class, "aboutMe"]);
+Route::get("/test/login", [TestingController::class, "loginForm"]);
+Route::post("/test/login", [TestingController::class, "login"]);
+Route::get("/test/juzzamma", [TestingController::class, "juzzamma"]);
+
